@@ -15,6 +15,7 @@ export default function UserItem({ user }: Props): JSX.Element {
 
   return (
     <NavLink
+      data-testid={user.id}
       onClick={() => setIsSelected(!isSelected)}
       to={`/${user.id}`}
       key={user.id}

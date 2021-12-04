@@ -5,9 +5,9 @@ import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import toast from "react-hot-toast";
 
-import Loader from "../components/Loader";
-import { FormType } from "../types";
-import * as api from "../services/api";
+import Loader from "../../components/Loader";
+import { FormType } from "../../types";
+import * as api from "../../services/api";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Please enter a name"),
@@ -46,7 +46,10 @@ export default function ContactInfo(): JSX.Element {
   };
 
   return (
-    <article className="flex flex-col p-5 h-full flex-shrink-0 bg-white overflow-y-auto">
+    <article
+      data-testid="contact-info"
+      className="flex flex-col p-5 h-full flex-shrink-0 bg-white overflow-y-auto"
+    >
       {isFetching && !error ? (
         <Loader />
       ) : error ? (
