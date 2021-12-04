@@ -46,7 +46,7 @@ export default function ContactInfo(): JSX.Element {
   };
 
   return (
-    <article className="flex flex-col p-5 h-full flex-shrink-0 w-96 bg-white overflow-y-auto">
+    <article className="flex flex-col p-5 h-full flex-shrink-0 bg-white overflow-y-auto">
       {isFetching && !error ? (
         <Loader />
       ) : error ? (

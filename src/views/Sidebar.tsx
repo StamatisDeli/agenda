@@ -19,7 +19,7 @@ export default function Sidebar(): JSX.Element {
   });
 
   return (
-    <aside className="flex flex-col h-full flex-shrink-0 w-96 bg-white border-r border-gray-200 overflow-y-auto">
+    <aside className="flex flex-col h-full flex-shrink-0 w-24 md:w-1/2 bg-white border-r border-gray-200 overflow-y-auto">
       {isFetching && !error ? (
         <Loader />
       ) : error ? (

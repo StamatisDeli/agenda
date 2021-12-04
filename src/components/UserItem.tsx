@@ -29,7 +29,7 @@ export default function UserItem({ user }: Props): JSX.Element {
         className="rounded-full bg-gray-500 w-14 h-14 mr-2"
         src={user.photo}
       />
-      <div className="text-left">
+      <div className="text-left hidden md:block">
         <p className="font-semibold">{user.name}</p>
         <p className="text-xs text-gray-400">{user.email}</p>
       </div>

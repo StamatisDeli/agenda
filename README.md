@@ -44,8 +44,10 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Learn More
+## Using the app
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The first time you see an instruction screen to right
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![image](/public/Screenshot.png)
+
+After selecting a user, the app will remember the selected user
