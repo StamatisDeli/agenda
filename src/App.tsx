@@ -1,25 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import { Routes, Route, Link } from "react-router-dom";
+
+import Agenda from "views/Agenda";
+import ContactInfo from "./views/ContactInfo";
+import Empty from "./views/Empty";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Agenda />}>
+        <Route index element={<Empty />} />
+        <Route path="/:id" element={<ContactInfo />} />
+      </Route>
+    </Routes>
   );
 }
 

@@ -1,8 +1,15 @@
 {
   "name": "agenda",
   "version": "0.1.0",
+  "description": "Agenda app",
+  "author": {
+    "name": "Stamatis Deliyannis",
+    "email": "stamatis.deliyannis@gmail.com"
+  },
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.4.2",
+    "@heroicons/react": "^1.0.5",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -10,16 +17,31 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/styled-components": "^5.1.16",
+    "autoprefixer": "^9",
+    "axios": "^0.24.0",
+    "formik": "^2.2.9",
+    "lodash": "^4.17.21",
+    "postcss": "^7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hot-toast": "^2.1.1",
+    "react-js-loader": "^0.1.0",
+    "react-loader-spinner": "^4.0.0",
+    "react-query": "^3.34.0",
+    "react-router-dom": "6",
     "react-scripts": "4.0.3",
+    "remove": "^0.1.5",
+    "styled-components": "^5.3.3",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "typescript": "^4.1.2",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -39,5 +61,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.177"
   }
 }
