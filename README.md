@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Open the terminal and clone the repository if this is the first time you are trying to run this application:
 
 ```bash
-$ git clone https://gihub
+$ git clone https://github.com/StamatisDeli/agenda.git
 ```
 
 Move to the application's root folder:
