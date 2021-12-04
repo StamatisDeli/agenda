@@ -8,5 +8,3 @@ export default function Loader(): JSX.Element {
     </div>
   );
 }
-
-//max-w-md

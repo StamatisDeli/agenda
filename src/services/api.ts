@@ -1,10 +1,3 @@
-// GET ALL
-// https://my-json-server.typicode.com/tsevdos/epignosis-users/users
-// GET ONE
-// https://my-json-server.typicode.com/tsevdos/epignosis-users/users/5c093af1c6ee9117a581c7d6
-// PUT
-// https://my-json-server.typicode.com/tsevdos/epignosis-users/users/5c093af1c6ee9117a581c7d6
-
 import request from "./request";
 import { UserType, FormType } from "../types";
 

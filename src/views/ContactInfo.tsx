@@ -18,7 +18,6 @@ const validationSchema = Yup.object().shape({
 export default function ContactInfo(): JSX.Element {
   const { id } = useParams<string>();
   const [isSaving, setIsSaving] = React.useState<boolean>(false);
-  const [isEditing, setIsEditing] = React.useState<boolean>(false);
   const isEditingRef = React.useRef<boolean>(false);
 
   const {
