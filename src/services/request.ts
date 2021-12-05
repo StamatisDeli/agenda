@@ -1,9 +1,12 @@
 import axios from "axios";
 import { get } from "lodash";
 
+export const BASE_URL =
+  "https://my-json-server.typicode.com/tsevdos/epignosis-users";
+
 const request = axios.create({
   //   baseURL: process.env.BASE_URL,
-  baseURL: "https://my-json-server.typicode.com/tsevdos/epignosis-users",
+  baseURL: BASE_URL,
   timeout: 50000,
 });
 

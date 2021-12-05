@@ -30,7 +30,7 @@ describe("<ContactInfo />", () => {
   let mock: MockAdapter;
 
   beforeEach(async () => {
-    mock = new MockAdapter(axios);
+    mock = new MockAdapter(axios, { onNoMatch: "throwException" });
   });
 
   afterEach(() => {
@@ -49,14 +49,12 @@ describe("<ContactInfo />", () => {
     mock = new MockAdapter(axios);
     console.log(user);
 
-    mock
-      .onGet(`/users/${user.id}`, { params: { id: user.id } })
-      .reply(200, { user });
+    mock.onGet(`/users/${user.id}`).reply(200, { user });
     const { getByText } = renderContactInfo();
 
-    axios.get(`/users/${user.id}`).then(function (response) {
-      console.log(JSON.stringify(response.data));
-    });
+    // axios.get(`/users/${user.id}`).then(function (response) {
+    //   console.log(JSON.stringify(response.data));
+    // });
 
     await waitFor(() => {
       expect(getByText(user.name)).toBeInTheDocument();

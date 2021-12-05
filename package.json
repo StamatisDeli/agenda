@@ -46,7 +46,9 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "eslintConfig": {
     "extends": [
@@ -67,6 +69,9 @@
     ]
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.177"
+    "@bahmutov/add-typescript-to-cypress": "^2.1.2",
+    "@types/lodash": "^4.14.177",
+    "cypress": "^9.1.1",
+    "webpack": "^5.64.4"
   }
 }

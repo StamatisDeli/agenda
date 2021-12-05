@@ -86,7 +86,7 @@ export default function ContactInfo(): JSX.Element {
                     name="name"
                     type="text"
                     placeholder="Enter name"
-                    data-test="name-input"
+                    data-testid="name-input"
                     className="mt-2 px-2 py-2 text-small w-full border border-gray-200 focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-200"
                   />
 
@@ -110,7 +110,7 @@ export default function ContactInfo(): JSX.Element {
                     name="email"
                     type="text"
                     placeholder="Enter email address"
-                    data-test="name-input"
+                    data-testid="name-input"
                     className="mt-2 px-2 py-2 text-small w-full border border-gray-200 focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-200"
                   />
 
@@ -134,7 +134,7 @@ export default function ContactInfo(): JSX.Element {
                     name="phone"
                     type="text"
                     placeholder="Enter phone"
-                    data-test="phone-input"
+                    data-testid="phone-input"
                     className="mt-2 px-2 py-2 text-small w-full border border-gray-200 focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-200"
                   />
 
@@ -158,7 +158,7 @@ export default function ContactInfo(): JSX.Element {
                     name="address"
                     type="text"
                     placeholder="Enter address"
-                    data-test="address-input"
+                    data-testid="address-input"
                     className="mt-2 px-2 py-2 text-small w-full border border-gray-200 focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-200"
                   />
 
@@ -182,7 +182,7 @@ export default function ContactInfo(): JSX.Element {
                     name="company"
                     type="text"
                     placeholder="Enter company"
-                    data-test="company-input"
+                    data-testid="company-input"
                     className="mt-2 px-2 py-2 text-small w-full border border-gray-200 focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-200"
                   />
 

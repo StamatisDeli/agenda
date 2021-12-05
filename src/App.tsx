@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import Agenda from "views/Agenda";
 import ContactInfo from "./views/ContactInfo";
@@ -14,6 +14,7 @@ function App() {
         <Route index element={<Empty />} />
         <Route path="/:id" element={<ContactInfo />} />
       </Route>
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 }

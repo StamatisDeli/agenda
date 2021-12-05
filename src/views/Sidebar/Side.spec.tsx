@@ -2,18 +2,39 @@ import * as React from "react";
 import { render, fireEvent, waitFor, cleanup } from "../../utils/test-utils";
 import "@testing-library/jest-dom/extend-expect";
 import axios from "axios";
+import mockAxios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import { Routes, Route, MemoryRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BASE_URL } from "../../services/request";
 
 import Sidebar from "./Sidebar";
+import Agenda from "../Agenda";
+import Empty from "../Empty";
+import ContactInfo from "../ContactInfo";
 import { usersResponseFactory } from "../../utils/factories/users";
 import * as api from "../../services/api";
 
 const renderSidebar = () => render(<Sidebar />);
 
-const data = [
+// const renderSidebar = () => {
+//   const queryClient = new QueryClient();
+
+//   return render(
+//     <MemoryRouter>
+//       <QueryClientProvider client={queryClient}>
+//         <Routes>
+//           <Route path="/" element={<Agenda />}>
+//             <Route index element={<Empty />} />
+//             <Route path="/:id" element={<ContactInfo />} />
+//           </Route>
+//         </Routes>
+//       </QueryClientProvider>
+//     </MemoryRouter>
+//   );
+// };
+
+const users = [
   {
     id: "f6e8c41e-9050-4957-bb25-58e654112a91",
     name: "Dortha",
@@ -61,19 +82,10 @@ const data = [
   },
 ];
 
-const mockGetUsers = (result: any) =>
-  jest.spyOn(api, "getUsers").mockResolvedValue(result as never);
-
 describe("<Sidebar />", () => {
-  let mock: MockAdapter;
-
-  beforeEach(async () => {
-    mock = new MockAdapter(axios);
-  });
-
-  afterEach(() => {
+  beforeEach(() => {
     cleanup();
-    mock.restore();
+    jest.restoreAllMocks();
   });
 
   it("should render", () => {
@@ -83,12 +95,16 @@ describe("<Sidebar />", () => {
   });
 
   it("should render a list of users", async () => {
-    // const data = usersResponseFactory(5);
-    // console.log(data.data);
-    mock = new MockAdapter(axios);
+    // const mockGetUsers = (result: any) =>
+    //   jest.spyOn(api, "getUsers").mockResolvedValue(result);
 
-    mock.onGet(`${BASE_URL}/users`).reply(200, data);
-    const { getByText } = renderSidebar();
+    const mock = jest.spyOn(api, "getUsers");
+    mock.mockImplementation(() => Promise.resolve(users));
+
+    const { queryByText } = renderSidebar();
+
+    // jest.spyOn(api, "getUsers").mockResolvedValue(users);
+    // mockGetUsers(users);
 
     // axios.get(`${BASE_URL}/users`).then(function (response) {
     //   console.log(JSON.stringify(response.data));
@@ -96,12 +112,9 @@ describe("<Sidebar />", () => {
 
     // console.log(data.data[0]?.name);
 
-    // await expect(getByText(data?.data[0]?.name)).toBeInTheDocument();
-    // expect(getByText(data.data[1]?.name)).toBeInTheDocument();
-
     await waitFor(() => {
-      expect(getByText(data[0]?.name)).toBeInTheDocument();
-      expect(getByText(data[1]?.name)).toBeInTheDocument();
+      expect(queryByText(users[0]?.name)).toBeInTheDocument();
+      expect(queryByText(users[1]?.name)).toBeInTheDocument();
     });
   });
 });
