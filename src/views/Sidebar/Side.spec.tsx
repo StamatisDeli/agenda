@@ -82,6 +82,8 @@ const users = [
   },
 ];
 
+jest.mock("axios");
+
 describe("<Sidebar />", () => {
   beforeEach(() => {
     cleanup();
@@ -98,15 +100,15 @@ describe("<Sidebar />", () => {
     // const mockGetUsers = (result: any) =>
     //   jest.spyOn(api, "getUsers").mockResolvedValue(result);
 
-    const mock = jest.spyOn(api, "getUsers");
-    mock.mockImplementation(() => Promise.resolve(users));
+    // const mock = jest.spyOn(api, "getUsers");
+    // mock.mockImplementationOnce(() => Promise.resolve(users));
 
     const { queryByText } = renderSidebar();
 
     // jest.spyOn(api, "getUsers").mockResolvedValue(users);
     // mockGetUsers(users);
 
-    // axios.get(`${BASE_URL}/users`).then(function (response) {
+    // axios.get(`**/users`).then(function (response) {
     //   console.log(JSON.stringify(response.data));
     // });
 

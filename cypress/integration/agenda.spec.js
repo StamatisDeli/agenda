@@ -15,13 +15,11 @@ describe("Agenda", () => {
     cy.get("[data-testid=agenda]").should("be.visible");
   });
 
-  it("renders the a users list", function () {
-    cy.contains("Master Yoda");
-    cy.contains("Anakin Skywalker");
-  });
-
-  it("renders info panel to the right the first time the app inializes", function () {
-    cy.contains("Select a user to edit");
+  describe("User list", () => {
+    it("renders the a users list", function () {
+      cy.contains("Master Yoda");
+      cy.contains("Anakin Skywalker");
+    });
   });
 
   it("selects a user on click and changes color to blue", function () {
@@ -34,11 +32,42 @@ describe("Agenda", () => {
     );
   });
 
-  it("renders the data of the selected user on the right section within a form", function () {
-    cy.get("[data-testid=5c093af1c6ee9117a581c7d6]").click();
+  describe.only("ContactInfo", () => {
+    it("renders info panel to the right the first time the app inializes", function () {
+      cy.contains("Select a user to edit");
+    });
 
-    cy.get("[data-testid=name-input]")
-      .should("be.visible")
-      .should("have.value", "Master Yoda");
+    it("renders the data of the selected user on the right section within a form", function () {
+      cy.get("[data-testid=5c093af1c6ee9117a581c7d6]").click();
+
+      cy.get("[data-testid=name-input]")
+        .should("be.visible")
+        .should("have.value", "Master Yoda");
+    });
+
+    it("the form should validate missing required field", function () {
+      cy.get("[data-testid=5c093af1c6ee9117a581c7d6]").click();
+
+      cy.get('[type="submit"]').click();
+
+      cy.contains("Please enter phone").should("be.visible");
+    });
+
+    it("The cancel button should appear when user starts editing the form", function () {
+      cy.get("[data-testid=5c093af1c6ee9117a581c7d6]").click();
+      cy.get("#phone").type("0010101010");
+
+      cy.get("[data-testid=cancel-button]").should("be.visible");
+    });
+
+    it("The cancel button should reset the form", function () {
+      cy.get("[data-testid=5c093af1c6ee9117a581c7d6]").click();
+      cy.get("#phone").type("0010101010");
+
+      cy.get("[data-testid=cancel-button]").should("be.visible");
+      cy.get("[data-testid=cancel-button]").click();
+
+      cy.get("#phone").should("have.value", "");
+    });
   });
 });

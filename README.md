@@ -17,6 +17,12 @@ Move to the application's root folder:
 $ cd agenda
 ```
 
+Add an `.env` file in the root folder and add the following:
+
+```bash
+SKIP_PREFLIGHT_CHECK=true
+```
+
 ## Available Scripts
 
 In the project directory, you can run:

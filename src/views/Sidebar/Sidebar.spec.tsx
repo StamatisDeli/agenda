@@ -85,7 +85,6 @@ describe("<Sidebar />", () => {
   it("should render a list of users", async () => {
     // const data = usersResponseFactory(5);
     // console.log(data.data);
-    mock = new MockAdapter(axios);
 
     mock.onGet(`${BASE_URL}/users`).reply(200, data);
     const { getByText } = renderSidebar();

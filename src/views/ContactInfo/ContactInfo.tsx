@@ -11,7 +11,9 @@ import * as api from "../../services/api";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Please enter a name"),
-  email: Yup.string().required("Please enter an email"),
+  email: Yup.string()
+    .email("Please enter a valid e-mail")
+    .required("Please enter an email"),
   phone: Yup.string().required("Please enter phone"),
 });
 
@@ -196,6 +198,7 @@ export default function ContactInfo(): JSX.Element {
                 <section className="flex w-full justify-end">
                   {isEditingRef.current && (
                     <button
+                      data-testid="cancel-button"
                       type="button"
                       onClick={() => {
                         resetForm();
@@ -208,13 +211,12 @@ export default function ContactInfo(): JSX.Element {
                   )}
 
                   <button
+                    data-testid="submit-button"
                     className={`${
-                      isSaving || !isEditingRef.current
-                        ? "bg-blue-300"
-                        : "bg-blue-500"
+                      isSaving ? "bg-blue-300" : "bg-blue-500"
                     } border text-white rounded-md py-2 px-4 uppercase ml-3 font-bold`}
                     type="submit"
-                    disabled={isSaving || !isEditingRef.current}
+                    disabled={isSaving}
                   >
                     Save
                   </button>
