@@ -3,7 +3,7 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      maxHeight: { "1/2": "50%", 9: "90%" },
+      maxHeight: { "1/2": "50%", "2/3": "75%", "3/4": "80%", "9/10": "90%" },
     },
   },
   variants: {
