@@ -55,7 +55,9 @@ export default function ContactInfo(): JSX.Element {
       {isFetching && !error ? (
         <Loader />
       ) : error ? (
-        <p>Error loading user</p>
+        <p className="flex flex-col p-5 h-full justify-center text-center text-red-400 flex-shrink-0 bg-white overflow-y-auto">
+          Error loading user
+        </p>
       ) : user ? (
         <Formik
           initialValues={{
