@@ -83,7 +83,6 @@ export default function ContactInfo(): JSX.Element {
                   </label>
 
                   <Field
-                    onFocus={console.log("FOUS")}
                     id="name"
                     name="name"
                     type="text"

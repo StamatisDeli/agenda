@@ -69,5 +69,32 @@ describe("Agenda", () => {
 
       cy.get("#phone").should("have.value", "");
     });
+
+    it.only("The form should submit with the correct data", function () {
+      const formData = {
+        id: "5c093af1c6ee9117a581c7d6",
+        photo: "https://randomuser.me/api/portraits/men/40.jpg",
+        name: "Master Yoda",
+        company: "ZOLAREX",
+        email: "bates.washington@zolarex.io",
+        phone: "0010101010",
+        address: "958 Brevoort Place, Ona, Maine, 2433",
+      };
+
+      cy.intercept("PUT", "**/users/5c093af1c6ee9117a581c7d6", formData).as(
+        "formPUT"
+      );
+
+      cy.get("[data-testid=5c093af1c6ee9117a581c7d6]").click();
+      cy.get("#phone").type("0010101010");
+
+      cy.get('[type="submit"]').click();
+      cy.wait("@formPUT")
+        .then((xhr) => xhr.response.body)
+        .then((body) => {
+          // expect(body).should("be.equal", formData);
+          assert.deepEqual(body, formData);
+        });
+    });
   });
 });
