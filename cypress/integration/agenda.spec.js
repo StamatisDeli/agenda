@@ -92,7 +92,6 @@ describe("Agenda", () => {
       cy.wait("@formPUT")
         .then((xhr) => xhr.response.body)
         .then((body) => {
-          // expect(body).should("be.equal", formData);
           assert.deepEqual(body, formData);
         });
     });
