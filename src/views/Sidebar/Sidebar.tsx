@@ -8,6 +8,8 @@ import * as api from "../../services/api";
 import UserItem from "components/UserItem";
 
 export default function Sidebar(): JSX.Element {
+  const isFirstRender = React.useRef<boolean>(true);
+  const selectedRef = React.useRef<HTMLAnchorElement>();
   const {
     data: users,
     isFetching,
@@ -17,6 +19,19 @@ export default function Sidebar(): JSX.Element {
       toast.error("Failed to get users data");
     },
   });
+
+  const handleScroll = (el: HTMLAnchorElement) => {
+    selectedRef.current = el;
+
+    el &&
+      isFirstRender.current && //only run the once
+      el.scrollIntoView({
+        behavior: "smooth",
+        inline: "start",
+      });
+
+    isFirstRender.current = false;
+  };
 
   return (
     <aside
@@ -28,7 +43,9 @@ export default function Sidebar(): JSX.Element {
       ) : error ? (
         <p>Error loading users</p>
       ) : users ? (
-        users.map((user: UserType) => <UserItem key={user.id} user={user} />)
+        users.map((user: UserType) => (
+          <UserItem key={user.id} user={user} onScrollTo={handleScroll} />
+        ))
       ) : (
         <p>No users data</p>
       )}

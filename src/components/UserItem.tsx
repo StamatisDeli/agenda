@@ -5,16 +5,22 @@ import { UserType } from "../types";
 
 interface Props {
   user: UserType;
+  onScrollTo?: (el: HTMLAnchorElement) => void;
 }
 
-export default function UserItem({ user }: Props): JSX.Element {
+export default function UserItem({ user, onScrollTo }: Props): JSX.Element {
   const [isSelected, setIsSelected] = React.useState<boolean>(false);
   const { pathname } = useLocation();
   const id = pathname.split("/")[1];
   const isCurrent = user.id === id;
 
+  const handleScroll = (el: HTMLAnchorElement) => {
+    el && onScrollTo && isCurrent && onScrollTo(el);
+  };
+
   return (
     <NavLink
+      ref={handleScroll}
       data-testid={user.id}
       onClick={() => setIsSelected(!isSelected)}
       to={`/${user.id}`}
