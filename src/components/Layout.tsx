@@ -19,7 +19,7 @@ export default function Layout({
   className = "",
 }: Props): JSX.Element {
   return (
-    <StyledMain className="flex flex-1 md:p-16 bg-gray-200 min-h-screen">
+    <StyledMain className="flex flex-1 md:p-16 bg-gray-200 2xl:max-h-2/3">
       {children}
     </StyledMain>
   );
