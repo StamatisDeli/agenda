@@ -21,6 +21,7 @@ Add an `.env` file in the root folder and add the following:
 
 ```bash
 SKIP_PREFLIGHT_CHECK=true
+REACT_APP_BASE_URL=https://my-json-server.typicode.com/tsevdos/epignosis-users
 ```
 
 ## Available Scripts
@@ -52,16 +53,28 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn cypress open`
+### `yarn cypress:open`
 
-Starts Cypress testing suite
+Starts Cypress testing suite\
+(You must do `yarn start` first!)
 
-You need to do `yarn start` first
+Also, there is a CI running in GitHub each time changes are introduced to the codebase.
 
 ## Using the app
 
 The first time you see an instruction screen to right
 
-![image](/public/Screenshot.png)
+![screenOne](/public/Screenshot.png#screenshot)
+
+If you click on a user, you can see their details, edit and save them (save not implemented in API yet)
+
+![screenTwo](/public/Screenshot-2.png#screenshot)
 
 After selecting a user, the app will remember the selected user
+
+<style type="text/css">
+    img[src*="#screenshot"] {
+        max-height: 300px;
+        max-width: 300px;
+    }
+</style>

@@ -5,9 +5,9 @@ import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import toast from "react-hot-toast";
 
-import Loader from "../../components/Loader";
-import { FormType, UserType } from "../../types";
-import * as api from "../../services/api";
+import Loader from "components/Loader";
+import { FormType, UserType } from "types";
+import * as api from "services/api";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Please enter a name"),

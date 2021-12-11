@@ -11,13 +11,9 @@ const StyledMain = styled.main`
 
 interface Props {
   children: React.ReactNode;
-  className?: string;
 }
 
-export default function Layout({
-  children,
-  className = "",
-}: Props): JSX.Element {
+export default function Layout({ children }: Props): JSX.Element {
   return (
     <StyledMain className="flex flex-1 md:p-16 bg-gray-200 2xl:max-h-2/3">
       {children}

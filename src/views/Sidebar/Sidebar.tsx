@@ -2,9 +2,9 @@ import React from "react";
 import { useQuery } from "react-query";
 import toast from "react-hot-toast";
 
-import { UserType } from "../../types";
-import Loader from "../../components/Loader";
-import * as api from "../../services/api";
+import { UserType } from "types";
+import Loader from "components/Loader";
+import * as api from "services/api";
 import UserItem from "components/UserItem";
 
 export default function Sidebar(): JSX.Element {

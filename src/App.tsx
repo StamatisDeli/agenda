@@ -4,8 +4,8 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import Agenda from "views/Agenda";
-import ContactInfo from "./views/ContactInfo";
-import Empty from "./views/Empty";
+import ContactInfo from "views/ContactInfo";
+import Empty from "views/Empty";
 
 function App() {
   return (

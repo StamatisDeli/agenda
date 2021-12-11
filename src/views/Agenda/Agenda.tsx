@@ -1,8 +1,8 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-import Sidebar from "./Sidebar";
-import Layout from "../components/Layout";
+import Sidebar from "views/Sidebar";
+import Layout from "components/Layout";
 
 export default function Agenda(): JSX.Element {
   return (

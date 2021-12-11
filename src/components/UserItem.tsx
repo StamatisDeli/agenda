@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
-import { UserType } from "../types";
+import { UserType } from "types";
 
 interface Props {
   user: UserType;
