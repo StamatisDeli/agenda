@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { UserType } from "types";
 import Loader from "components/Loader";
 import * as api from "services/api";
-import UserItem from "components/UserItem";
+import UserItem from "./UserItem";
 
 export default function Sidebar(): JSX.Element {
   const isFirstRender = React.useRef<boolean>(true);

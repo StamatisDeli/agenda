@@ -80,11 +80,11 @@ export default function ContactInfo(): JSX.Element {
               isEditingRef.current = true;
             }
             return (
-              <Form className="text-left flex flex-col">
+              <Form className="text-left flex flex-col text-gray-800">
                 <section className="mb-5">
                   <label
                     htmlFor="name"
-                    className="font-semibold text-sm text-gray-500"
+                    className="font-semibold text-sm text-gray-550"
                   >
                     Name
                   </label>
@@ -95,7 +95,7 @@ export default function ContactInfo(): JSX.Element {
                     type="text"
                     placeholder="Enter name"
                     data-testid="name-input"
-                    className="mt-2 px-2 py-2 text-small w-full border border-gray-200 focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-200"
+                    className="mt-2 px-2 py-2 text-small w-full border border-gray-50 focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-200"
                   />
 
                   <ErrorMessage
@@ -108,7 +108,7 @@ export default function ContactInfo(): JSX.Element {
                 <section className="mb-5">
                   <label
                     htmlFor="name"
-                    className="mb-1 font-semibold text-sm text-gray-500"
+                    className="mb-1 font-semibold text-sm text-gray-550"
                   >
                     Email Address
                   </label>
@@ -119,7 +119,7 @@ export default function ContactInfo(): JSX.Element {
                     type="text"
                     placeholder="Enter email address"
                     data-testid="name-input"
-                    className="mt-2 px-2 py-2 text-small w-full border border-gray-200 focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-200"
+                    className="mt-2 px-2 py-2 text-small w-full border border-gray-50 focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-200"
                   />
 
                   <ErrorMessage
@@ -132,7 +132,7 @@ export default function ContactInfo(): JSX.Element {
                 <section className="mb-5">
                   <label
                     htmlFor="name"
-                    className="mb-1 font-semibold text-sm text-gray-500"
+                    className="mb-1 font-semibold text-sm text-gray-550"
                   >
                     Phone
                   </label>
@@ -143,7 +143,7 @@ export default function ContactInfo(): JSX.Element {
                     type="text"
                     placeholder="Enter phone"
                     data-testid="phone-input"
-                    className="mt-2 px-2 py-2 text-small w-full border border-gray-200 focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-200"
+                    className="mt-2 px-2 py-2 text-small w-full border border-gray-50 focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-200"
                   />
 
                   <ErrorMessage
@@ -156,7 +156,7 @@ export default function ContactInfo(): JSX.Element {
                 <section className="mb-5">
                   <label
                     htmlFor="name"
-                    className="mb-1 font-semibold text-sm text-gray-500"
+                    className="mb-1 font-semibold text-sm text-gray-550"
                   >
                     Address
                   </label>
@@ -167,7 +167,7 @@ export default function ContactInfo(): JSX.Element {
                     type="text"
                     placeholder="Enter address"
                     data-testid="address-input"
-                    className="mt-2 px-2 py-2 text-small w-full border border-gray-200 focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-200"
+                    className="mt-2 px-2 py-2 text-small w-full border border-gray-50 focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-200"
                   />
 
                   <ErrorMessage
@@ -180,7 +180,7 @@ export default function ContactInfo(): JSX.Element {
                 <section className="mb-5">
                   <label
                     htmlFor="name"
-                    className="mb-1 font-semibold text-sm text-gray-500"
+                    className="mb-1 font-semibold text-sm text-gray-550"
                   >
                     Company
                   </label>
@@ -191,7 +191,7 @@ export default function ContactInfo(): JSX.Element {
                     type="text"
                     placeholder="Enter company"
                     data-testid="company-input"
-                    className="mt-2 px-2 py-2 text-small w-full border border-gray-200 focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-200"
+                    className="mt-2 px-2 py-2 text-small w-full border border-gray-50 focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-200"
                   />
 
                   <ErrorMessage
@@ -210,7 +210,7 @@ export default function ContactInfo(): JSX.Element {
                         resetForm();
                         isEditingRef.current = false;
                       }}
-                      className={`bg-gray-300 text-gray-600 self-end border rounded-md py-2 px-4 uppercase ml-3 font-bold`}
+                      className={`bg-gray-150 text-gray-500 self-end rounded-md py-2 px-4 uppercase ml-3 font-bold`}
                     >
                       Cancel
                     </button>
@@ -219,7 +219,7 @@ export default function ContactInfo(): JSX.Element {
                   <button
                     data-testid="submit-button"
                     className={`${
-                      isSaving ? "bg-blue-300" : "bg-blue-500"
+                      isSaving ? "bg-blue-300" : "bg-blue-550"
                     } border text-white rounded-md py-2 px-4 uppercase ml-3 font-bold`}
                     type="submit"
                     disabled={isSaving}

@@ -26,9 +26,9 @@ export default function UserItem({ user, onScrollTo }: Props): JSX.Element {
       to={`/${user.id}`}
       key={user.id}
       className={`${
-        isCurrent && "bg-blue-500"
+        isCurrent && "bg-blue-550 text-white"
       }  py-2 px-4 flex cursor-pointer items-center relative flex-shrink-0 flex-grow-0 ${
-        !isSelected && "hover:bg-gray-300"
+        !isSelected && "hover:bg-gray-250"
       }`}
     >
       <img

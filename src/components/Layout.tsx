@@ -15,7 +15,7 @@ interface Props {
 
 export default function Layout({ children }: Props): JSX.Element {
   return (
-    <StyledMain className="flex flex-1 md:p-16 bg-gray-200 2xl:max-h-2/3">
+    <StyledMain className="flex flex-1 md:p-16 bg-gray-100 2xl:max-h-2/3">
       {children}
     </StyledMain>
   );
