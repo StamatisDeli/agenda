@@ -6,7 +6,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import toast from "react-hot-toast";
 
 import Loader from "../../components/Loader";
-import { FormType } from "../../types";
+import { FormType, UserType } from "../../types";
 import * as api from "../../services/api";
 
 const validationSchema = Yup.object().shape({
@@ -22,16 +22,16 @@ export default function ContactInfo(): JSX.Element {
   const [isSaving, setIsSaving] = React.useState<boolean>(false);
   const isEditingRef = React.useRef<boolean>(false);
 
-  const {
-    data: user,
-    isFetching,
-    error,
-  } = useQuery(["user", id], () => api.getUser(id as any), {
-    onError: () => {
-      toast.error("Failed to get user data");
-    },
-    retry: false,
-  });
+  const { data, isLoading, isSuccess, error } = useQuery(
+    ["user", id],
+    () => api.getUser(id as string),
+    {
+      onError: () => {
+        toast.error("Failed to get user data");
+      },
+      retry: false,
+    }
+  );
 
   const handleSubmit = async (values: FormType) => {
     try {
@@ -47,18 +47,23 @@ export default function ContactInfo(): JSX.Element {
     }
   };
 
+  const user = data ?? ({} as UserType);
+  const hasUser = Object.keys(user).length;
+
   return (
     <article
       data-testid="contact-info"
       className="flex flex-col p-5 h-full flex-shrink-0 bg-white overflow-y-auto"
     >
-      {isFetching && !error ? (
-        <Loader />
-      ) : error ? (
+      {isLoading && <Loader />}
+
+      {error && !isLoading && (
         <p className="flex flex-col p-5 h-full justify-center text-center text-red-400 flex-shrink-0 bg-white overflow-y-auto">
           Error loading user
         </p>
-      ) : user ? (
+      )}
+
+      {isSuccess && hasUser && (
         <Formik
           initialValues={{
             name: user.name || "",
@@ -226,8 +231,6 @@ export default function ContactInfo(): JSX.Element {
             );
           }}
         </Formik>
-      ) : (
-        <p>Select a user to edit</p>
       )}
     </article>
   );

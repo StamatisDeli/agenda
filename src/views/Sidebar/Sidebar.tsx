@@ -10,15 +10,15 @@ import UserItem from "components/UserItem";
 export default function Sidebar(): JSX.Element {
   const isFirstRender = React.useRef<boolean>(true);
   const selectedRef = React.useRef<HTMLAnchorElement>();
-  const {
-    data: users,
-    isFetching,
-    error,
-  } = useQuery("users,", api.getUsers, {
-    onError: () => {
-      toast.error("Failed to get users data");
-    },
-  });
+  const { data, isLoading, isSuccess, error } = useQuery(
+    "users",
+    api.getUsers,
+    {
+      onError: () => {
+        toast.error("Failed to get users data");
+      },
+    }
+  );
 
   const handleScroll = (el: HTMLAnchorElement) => {
     selectedRef.current = el;
@@ -33,21 +33,32 @@ export default function Sidebar(): JSX.Element {
     isFirstRender.current = false;
   };
 
+  const users = data ?? [];
+  const hasResults = users.length > 0;
+
   return (
     <aside
       data-testid="sidebar"
-      className="flex flex-col h-full flex-shrink-0 w-24 md:w-1/2 bg-white border-r border-gray-200 overflow-y-auto"
+      className="flex flex-col h-full text-center flex-shrink-0 w-24 md:w-1/2 bg-white border-r border-gray-200 overflow-y-auto"
     >
-      {isFetching && !error ? (
-        <Loader />
-      ) : error ? (
-        <p>Error loading users</p>
-      ) : users ? (
+      {isLoading && <Loader />}
+
+      {isSuccess &&
+        hasResults &&
         users.map((user: UserType) => (
           <UserItem key={user.id} user={user} onScrollTo={handleScroll} />
-        ))
-      ) : (
-        <p>No users data</p>
+        ))}
+
+      {error && (
+        <p className="flex flex-col p-5 h-full justify-center text-center text-red-400 flex-shrink-0 bg-white overflow-y-auto">
+          Error loading users
+        </p>
+      )}
+
+      {!hasResults && !isLoading && (
+        <p className="flex flex-col p-5 h-full justify-center text-center flex-shrink-0 bg-white overflow-y-auto">
+          No users data
+        </p>
       )}
     </aside>
   );

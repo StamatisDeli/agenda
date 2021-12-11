@@ -12,6 +12,7 @@ export default function Agenda(): JSX.Element {
         className="2xl:max-h-2/3 mx-auto overflow-hidden border border-gray-200 flex flex-row w-full max-w-4xl shadow-sm"
       >
         <Sidebar />
+
         <div className="w-full md:w-1/2 bg-white">
           <Outlet />
         </div>

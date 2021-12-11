@@ -1,36 +1,39 @@
 import * as React from "react";
-import { render, waitFor, cleanup } from "@testing-library/react";
+// import { render, waitFor, cleanup, screen } from "@testing-library/react";
+import { render, waitFor, cleanup } from "../../utils/test-utils";
 import "@testing-library/jest-dom/extend-expect";
-import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import { Routes, Route, MemoryRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { createMemoryHistory } from "history";
 
 import ContactInfo from "./ContactInfo";
-
+import request from "../../services/request";
 import { userFactory } from "../../utils/factories/users";
 
-const renderContactInfo = () => {
-  const queryClient = new QueryClient();
+import { MemoryRouter, Route, Routes, Router } from "react-router-dom";
+import axios from "axios";
 
-  return render(
-    <MemoryRouter initialEntries={[`/:id`]}>
-      <QueryClientProvider client={queryClient}>
-        <Routes>
-          {/* <Route path="/" element={<Agenda />}> */}
-          <Route path="/:id" element={<ContactInfo />} />
-          {/* </Route> */}
-        </Routes>
-      </QueryClientProvider>
-    </MemoryRouter>
-  );
-};
+const renderContactInfo = () => render(<ContactInfo />);
+const user = userFactory();
+// const renderContactInfo = () => {
+//   const queryClient = new QueryClient();
+
+//   return render(
+//     <MemoryRouter initialEntries={[`/${user.id}`]}>
+//       <QueryClientProvider client={queryClient}>
+//         <Routes>
+//           <Route path={`/:id`} element={<ContactInfo />} />
+//         </Routes>
+//       </QueryClientProvider>
+//     </MemoryRouter>
+//   );
+// };
 
 describe("<ContactInfo />", () => {
   let mock: MockAdapter;
 
   beforeEach(async () => {
-    mock = new MockAdapter(axios, { onNoMatch: "throwException" });
+    mock = new MockAdapter(request, { onNoMatch: "throwException" });
   });
 
   afterEach(() => {
@@ -42,23 +45,20 @@ describe("<ContactInfo />", () => {
     const { getByTestId } = renderContactInfo();
 
     expect(getByTestId("contact-info")).toBeInTheDocument();
+    expect(window.location.pathname).toBe(`/${user.id}`);
   });
 
   it("should render the contact info of given user", async () => {
-    const user = userFactory();
-    mock = new MockAdapter(axios);
+    mock.onGet(`/users/${user.id}`).reply(200, user);
     console.log(user);
-
-    mock.onGet(`/users/${user.id}`).reply(200, { user });
-    const { getByText } = renderContactInfo();
-
-    // axios.get(`/users/${user.id}`).then(function (response) {
-    //   console.log(JSON.stringify(response.data));
-    // });
+    const { getByText, getByLabelText, debug } = renderContactInfo();
+    // const name = getByLabelText("Name");
 
     await waitFor(() => {
-      expect(getByText(user.name)).toBeInTheDocument();
-      expect(getByText(user.address)).toBeInTheDocument();
+      debug();
+      // expect(name).toBe(user.name);
+      // expect(getByText(user.name)).toBeInTheDocument();
+      // expect(getByText(user.address)).toBeInTheDocument();
     });
   });
 });

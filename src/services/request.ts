@@ -1,15 +1,12 @@
 import axios from "axios";
 import { get } from "lodash";
 
-export const BASE_URL =
-  "https://my-json-server.typicode.com/tsevdos/epignosis-users";
-
 const request = axios.create({
-  //   baseURL: process.env.BASE_URL,
-  baseURL: BASE_URL,
+  baseURL: process.env.REACT_APP_BASE_URL,
   timeout: 50000,
 });
 
+// TODO: Use token
 request.interceptors.request.use(
   (config) => {
     return {

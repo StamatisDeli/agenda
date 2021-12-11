@@ -2,7 +2,7 @@ import request from "./request";
 import { UserType, FormType } from "../types";
 
 export const getUsers = async () => {
-  const { data } = await request.get("/users");
+  const { data } = await request.get(`/users`);
 
   return data;
 };
