@@ -64,17 +64,10 @@ Also, there is a CI running in GitHub each time changes are introduced to the co
 
 The first time you see an instruction screen to right
 
-![screenOne](/public/Screenshot.png#screenshot)
+<img alt="users list" height="300px" maxHeight="300px" src="public/Screenshot.png">
 
 If you click on a user, you can see their details, edit and save them (save not implemented in API yet)
 
-![screenTwo](/public/Screenshot-2.png#screenshot)
+<img alt="user selected" width="300px" maxHeight="300px" src="public/Screenshot-2.png">
 
 After selecting a user, the app will remember the selected user
-
-<style type="text/css">
-    img[src*="#screenshot"] {
-        max-height: 300px;
-        max-width: 300px;
-    }
-</style>
