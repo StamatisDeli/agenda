@@ -65,6 +65,7 @@ export default function ContactInfo(): JSX.Element {
 
       {isSuccess && hasUser && (
         <Formik
+          enableReinitialize
           initialValues={{
             name: user.name || "",
             email: user.email || "",
